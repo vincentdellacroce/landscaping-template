@@ -1,0 +1,59 @@
+/* Scroll-expansion media hero — ported from the Tailwind/Next component to
+   plain CSS so it lives inside the existing Vite + hand-CSS project. */
+.sem-root{overflow-x:hidden;transition:colors .7s ease-in-out}
+.sem-section{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;min-height:100dvh}
+.sem-stage{position:relative;width:100%;display:flex;flex-direction:column;align-items:center;min-height:100dvh}
+
+.sem-bg{position:absolute;inset:0;z-index:0;height:100%}
+.sem-bg-img{width:100vw;height:100vh;object-fit:cover;object-position:center}
+.sem-bg-overlay{position:absolute;inset:0;background:rgba(8,8,8,.28)}
+
+.sem-container{max-width:1180px;width:100%;margin:0 auto;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;position:relative;z-index:10;padding:0 24px}
+
+.sem-media-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;height:100dvh;position:relative}
+
+.sem-media{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);border-radius:16px}
+.sem-media-inner{position:relative;width:100%;height:100%;pointer-events:none}
+.sem-video,.sem-image{width:100%;height:100%;object-fit:cover;border-radius:14px;display:block}
+.sem-shade{position:absolute;inset:0;border-radius:14px;background:#000}
+
+.sem-media-text{display:flex;flex-direction:column;align-items:center;text-align:center;position:relative;z-index:10;margin-top:1rem}
+.sem-date{font-family:var(--font-display);font-size:1.5rem;color:var(--gold-soft);margin:0}
+.sem-scroll{font-family:var(--font-body);font-weight:600;font-size:.8rem;letter-spacing:.22em;text-transform:uppercase;color:var(--tan);text-align:center;margin:.5rem 0 0}
+
+/* Your Company emblem that grows from the center over the expanding media */
+.sem-logo{
+  position:absolute;top:50%;left:50%;z-index:6;
+  transform:translate(-50%,-50%) scale(0);
+  transform-origin:center center;
+  pointer-events:none;
+  will-change:transform,opacity;
+  filter:drop-shadow(0 8px 28px rgba(0,0,0,.55));
+}
+.sem-logo .mark{width:clamp(150px,38vmin,360px)!important;height:clamp(150px,38vmin,360px)!important}
+
+.sem-title-wrap{display:flex;align-items:center;justify-content:center;text-align:center;gap:.4rem;width:100%;position:relative;z-index:10;flex-direction:column}
+.sem-title{
+  font-family:var(--font-display);
+  font-weight:400;
+  font-size:clamp(3rem,9vw,7rem);
+  line-height:.98;
+  color:#ffffff;
+  margin:0;
+  text-shadow:0 4px 30px rgba(0,0,0,.45);
+}
+
+.sem-content{display:flex;flex-direction:column;width:100%;padding:0 24px 40px}
+
+/* Your Company intro block shown after the media expands */
+.sem-intro{max-width:760px;margin:0 auto;text-align:center;display:flex;flex-direction:column;align-items:center}
+.sem-intro .eyebrow{justify-content:center}
+.sem-intro h2{font-family:var(--font-display);font-weight:400;color:#fff;font-size:clamp(2.6rem,6vw,4.6rem);line-height:1.02;margin:18px 0 0}
+.sem-intro h2 .accent{color:var(--gold);font-style:italic}
+.sem-intro p{color:var(--muted-light);font-size:1.12rem;margin-top:22px;max-width:560px}
+.sem-intro .hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px;justify-content:center}
+
+@media (max-width:768px){
+  .sem-date{font-size:1.15rem}
+  .sem-title{font-size:clamp(2.6rem,12vw,4rem)}
+}

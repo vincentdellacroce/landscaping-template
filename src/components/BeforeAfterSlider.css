@@ -1,0 +1,45 @@
+.ba{
+  position:relative;
+  width:100%;
+  aspect-ratio:16/10;
+  border-radius:16px;
+  overflow:hidden;
+  border:1px solid var(--line-dark);
+  cursor:ew-resize;
+  user-select:none;
+  touch-action:none; /* let horizontal drag control the slider, not page scroll */
+  background:#0f0f0f;
+}
+.ba-img{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;display:block;pointer-events:none;
+}
+.ba-before{position:absolute;inset:0;overflow:hidden;will-change:clip-path}
+
+.ba-tag{
+  position:absolute;top:14px;z-index:3;
+  font-family:var(--font-body);font-size:.68rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+  color:#fff;padding:6px 11px;border-radius:999px;
+  background:rgba(8,8,8,.55);backdrop-filter:blur(6px);
+  border:1px solid rgba(255,255,255,.14);pointer-events:none;
+}
+.ba-tag-before{left:14px}
+.ba-tag-after{right:14px;color:var(--gold-soft);border-color:rgba(227,196,134,.3)}
+
+.ba-divider{
+  position:absolute;top:0;bottom:0;z-index:4;
+  width:2px;margin-left:-1px;
+  background:var(--gold);
+  box-shadow:0 0 0 1px rgba(0,0,0,.25),0 0 18px rgba(201,162,74,.5);
+}
+.ba-divider:focus-visible{outline:none}
+.ba-divider:focus-visible .ba-handle{box-shadow:0 0 0 4px rgba(201,162,74,.35)}
+.ba-handle{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:46px;height:46px;border-radius:50%;
+  background:rgba(13,13,13,.55);backdrop-filter:blur(8px);
+  border:2px solid var(--gold);color:var(--gold-soft);
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 6px 20px rgba(0,0,0,.4);transition:box-shadow .2s ease;
+}
+.ba-handle svg{width:22px;height:22px}

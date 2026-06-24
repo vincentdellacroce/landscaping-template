@@ -1,0 +1,5 @@
+# Your Company Landscaping and Construction — robots.txt
+User-agent: *
+Allow: /
+
+Sitemap: https://example.com/sitemap.xml

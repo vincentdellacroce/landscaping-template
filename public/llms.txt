@@ -1,0 +1,42 @@
+# Your Company Landscaping and Construction
+
+> Landscaping, hardscaping, and snow removal company serving homeowners across Your Area. One local crew, four-season service, free estimates.
+
+## Contact
+
+- Phone / text: 555-555-5555
+- Email: hello@example.com
+- Service area: Town One, Town Two, Town Three, Town Four, Town Five, and Town Six, plus surrounding Your Area
+- Website: https://example.com/
+
+## Services
+
+- Lawn maintenance — weekly and biweekly mowing, edging, and trimming
+- Spring & fall cleanups — leaf removal, bed prep, seasonal cutbacks
+- Sod installation — fresh sod for an instant, healthy lawn
+- Mulch & garden beds — mulch delivery, bed installation, and edging
+- Paver patios & walkways — paver and stone hardscaping
+- Driveways — paver and Belgian block driveways, aprons, and edging
+- Pools — pool decking, paver surrounds, and backyard pool landscaping
+- Landscape installation — full design, planting, and grading
+- Snow removal — residential plowing and salting all winter
+
+## Service-area pages
+
+- Town One: https://example.com/landscaping-town-one
+- Town Two: https://example.com/landscaping-town-two
+- Town Three: https://example.com/landscaping-town-three
+- Town Four: https://example.com/landscaping-town-four
+- Town Five: https://example.com/landscaping-town-five
+- Town Six: https://example.com/landscaping-town-six
+
+## Guides
+
+- How much does a paver patio cost in Your Area?: https://example.com/paver-patio-cost
+
+## Key facts
+
+- Years in business: (add yours)
+- Towns served: 6 core towns across Your Area
+- Estimates: free, usually returned within one business day
+- Project size: everything from a single mulch delivery to full patio-and-grading builds

@@ -1,0 +1,17 @@
+{
+  "name": "Your Company Landscaping and Construction",
+  "short_name": "Your Company",
+  "description": "Landscaping, hardscaping & snow removal in Your Area.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0d0d0d",
+  "theme_color": "#0d0d0d",
+  "icons": [
+    {
+      "src": "/logo-mark.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
