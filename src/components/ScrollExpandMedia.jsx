@@ -25,11 +25,16 @@ export default function ScrollExpandMedia({
   // Smoothed value that eases toward scrollProgress every frame so the
   // expansion glides even though wheel/touch events arrive in coarse steps.
   const [displayProgress, setDisplayProgress] = useState(0)
+  // iOS Low Power Mode (and similar battery-saver modes) block video autoplay,
+  // leaving the hero <video> frozen on a play-button overlay. When that happens
+  // we swap to the static poster image so the hero still looks clean.
+  const [videoBlocked, setVideoBlocked] = useState(false)
 
   const sectionRef = useRef(null)
   const targetRef = useRef(0)
   const displayRef = useRef(0)
   const rafRef = useRef(0)
+  const videoRef = useRef(null)
 
   // Easing loop that runs ONLY while displayProgress is catching up to the
   // target, then stops itself — so nothing animates every frame while the hero
@@ -68,6 +73,32 @@ export default function ScrollExpandMedia({
   }, [scrollProgress, startEase])
 
   useEffect(() => () => { if (rafRef.current) cancelAnimationFrame(rafRef.current) }, [])
+
+  // Try to autoplay the hero video; if the browser refuses (Low Power Mode) or
+  // the video stays paused, fall back to the poster image instead of a frozen
+  // video with a play button stuck over it.
+  useEffect(() => {
+    if (mediaType !== 'video') return
+    const v = videoRef.current
+    if (!v) return
+    let settled = false
+    const fallback = () => {
+      if (!settled) {
+        settled = true
+        setVideoBlocked(true)
+      }
+    }
+    const playPromise = v.play()
+    if (playPromise && typeof playPromise.then === 'function') {
+      playPromise.catch(fallback)
+    }
+    // Low Power Mode can let play() resolve but then keep the video paused —
+    // double-check shortly after.
+    const t = setTimeout(() => {
+      if (v.paused) fallback()
+    }, 800)
+    return () => clearTimeout(t)
+  }, [mediaType])
 
   // Respect reduced-motion: present the media already expanded, no scroll hijack.
   useEffect(() => {
@@ -206,19 +237,28 @@ export default function ScrollExpandMedia({
               >
                 {mediaType === 'video' ? (
                   <div className="sem-media-inner">
-                    <video
-                      src={mediaSrc}
-                      poster={posterSrc}
-                      autoPlay
-                      muted
-                      loop
-                      playsInline
-                      preload="metadata"
-                      className="sem-video"
-                      controls={false}
-                      disablePictureInPicture
-                      disableRemotePlayback
-                    />
+                    {videoBlocked ? (
+                      <img
+                        src={posterSrc || bgImageSrc}
+                        alt=""
+                        className="sem-video"
+                      />
+                    ) : (
+                      <video
+                        ref={videoRef}
+                        src={mediaSrc}
+                        poster={posterSrc}
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                        preload="metadata"
+                        className="sem-video"
+                        controls={false}
+                        disablePictureInPicture
+                        disableRemotePlayback
+                      />
+                    )}
                     <motion.div
                       className="sem-shade"
                       initial={{ opacity: 0.5 }}
